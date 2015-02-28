@@ -12,7 +12,7 @@ foo();
 console.log( global ); // 输出:I am global!  
 console.log( local ); // 输出: local is not defined
 ```  
-&nbsp;&nbsp;在Javascript中，唯一能控制变量作用域的代码块就是**函数**（这里我们暂不讨论在ECMAScript 6中的[let](http://es6.ruanyifeng.com/#docs/let)关键字），从上述代码运行结果看可以看到， 控制台可以打印出*global*的值，那么*global*是**全局变量**，而*local*的结果是undefined，所以*local*就是**局部变量**。  
+  在Javascript中，唯一能控制变量作用域的代码块就是**函数**（这里我们暂不讨论在ECMAScript 6中的[let](http://es6.ruanyifeng.com/#docs/let)关键字），从上述代码运行结果看可以看到， 控制台可以打印出*global*的值，那么*global*是**全局变量**，而*local*的结果是undefined，所以*local*就是**局部变量**。  
     怎么样，是不是很简单？  
     But！如果我们在声明变量中忘记添加前面的关键字*var*，那么这个这个变量会被解释为全局变量，我们把上述代码中foo()方法里定义变量的*var*删掉：  
 ```js
@@ -24,7 +24,7 @@ foo();
 console.log( global ); // 输出:I am global!  
 console.log( local ); // 输出: I am local!  这里local变成了全局可访问的
 ```  
-&nbsp;&nbsp;看！外部也可以访问到foo()方法里的local变量，那么我们可以断定local的作用域是全局的！  
+  看！外部也可以访问到foo()方法里的local变量，那么我们可以断定local的作用域是全局的！  
 好了，让我们再看一段代码，思考一下它的运行结果是什么。  
 ```js
 var variable = 1;
@@ -69,4 +69,22 @@ foo(); //输出 1
 &nbsp;&nbsp;在foo()方法内部，由于找不到变量*variable*，所以它会跳出foo()内部的作用域，到创建foo()方法的环境中去寻找（这里foo()的作用域是全局），在全局作用域中，找到了变量*variable*的定义，并且在初始化的时候也已经赋值，所以输出了数字1。  
 
 &nbsp;&nbsp;最后，回到我们刚才的思考题，也就不难解释为什么程序输出的结果是*undefined*了。
-在foo()执行的过程中，因为**变量提升**，使得内部已经声明了变量*variable*，所以在在执行console.log(variable);这句话时，变量*variable*在它的执行环境上已经查找到它的定义，所以不会跳出foo()内部的作用域向外寻找，但是*variable*的赋值是在console.log(variable );之后进行的，我们知道已定义 但是未赋值的变量输出的值为*undefined*，所以程序输出的结果自然就是undefined了。
+在foo()执行的过程中，因为**变量提升**，使得内部已经声明了变量*variable*，所以在执行console.log(variable);这句话时，变量*variable*在它的执行环境上已经查找到它的定义，所以不会跳出foo()内部的作用域向外寻找，但是*variable*的赋值是在console.log(variable );之后进行的，我们知道已定义 但是未赋值的变量输出的值为*undefined*，所以程序输出的结果自然就是undefined了
+###2.函数  
+&nbsp;&nbsp;函数是Javascript语言中的一等公民，我们使用它来控制变量作用域以及提供私有变量和方法。  
+常见的函数声明有以下两种方式：  
+```js
+//声明式：
+function fn1(a, b) {
+	return a + b;
+}
+fn1(1,2);
+
+//函数表达式：
+var fn2 = function(a, b){
+	return a-b;
+}
+fn2(2,1);
+```
+
+未完待续...
