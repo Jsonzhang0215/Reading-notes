@@ -151,6 +151,83 @@ var cisDept = itDiv;
 console.log(dmpDept);
 console.log(cisDept);
 
+//可变函数
+//为数组添加元素
+//使用push()方法和unshift()方法为数组增减元素
+//push()方法，在数组末尾添加元素
+var nums = [1, 2, 3, 4, 5];
+console.log(nums);
+nums.push(6);
+console.log(nums);
+
+//也有另外一种方法，使用length为数组末尾添加元素，但是不如push()方法直观
+var nums = [1, 2, 3, 4, 5];
+console.log(nums);
+nums[nums.length] = 6;
+console.log(nums);
+
+//在数组开头添加元素
+var nums = [2,3,4,5];
+var newNum = 1;
+var N = nums.length;
+for( var i = N; i >= 0 ; i--){
+	nums[i] = nums[i-1];
+}
+nums[0] = newNum;
+console.log(nums);
+
+//unshift()方法
+var nums = [2, 3, 4];
+console.log(nums);
+var newnum = 1;
+nums.unshift(newnum);
+console.log(nums);
+nums = [3, 4, 5];
+nums.unshift(newnum, 1, 2);
+console.log(nums);
+
+//从数组中删除元素
+//使用pop()方法从数组末尾删除元素
+var nums = [1, 2, 3, 4, 5, 9];
+nums.pop();
+console.log(nums);
+
+//也可以通过改变数组的length来删除数组的末尾元素
+var nums = [1, 2, 3, 4, 5, 9];
+nums.length = nums.length - 1;
+console.log(nums[nums.length + 1]);
+console.log(nums);
+
+//删除数组第一个元素
+var nums = [9, 1, 2, 3, 4, 5];
+console.log(nums);
+for (var i = 0; i < nums.length; i++){
+	nums[i] = nums[i + 1];
+}
+nums.pop();
+console.log(nums);
+
+//或者使用shift()方法删除数组的第一个元素
+var nums = [9, 1, 2, 3, 4, 5,];
+nums.shift();
+console.log(nums);
+
+//pop()方法和shift()方法是存在返回值的，即删除的数组元素
+var nums = [6, 1, 2, 3, 4, 5];
+var first = nums.shift();
+nums.push(first);
+console.log(nums);
+var nums = [2, 3, 4, 5, 6, 1];
+var last = nums.pop();
+nums.unshift(last);
+console.log(nums);
+
+
+
+
+
+
+
 
 
 
